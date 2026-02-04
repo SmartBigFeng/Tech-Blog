@@ -1,4 +1,4 @@
-import axios from 'axios'
+import axios, { type AxiosRequestConfig } from 'axios'
 import type { Response } from '@/types'
 
 // 创建 axios 实例
@@ -13,7 +13,6 @@ const api = axios.create({
 // 请求拦截器
 api.interceptors.request.use(
   (config) => {
-    // 可以在这里添加 token 等
     return config
   },
   (error) => {
@@ -32,20 +31,16 @@ api.interceptors.response.use(
   }
 )
 
-// 创建类型安全的 API 客户端
+// 类型安全的请求函数
+function request<T>(config: AxiosRequestConfig): Promise<Response<T>> {
+  return api.request<Response<T>>(config) as unknown as Promise<Response<T>>
+}
+
 const apiClient = {
-  get: <T>(url: string, config?: any) => {
-    return api.get<Response<T>>(url, config) as Promise<Response<T>>
-  },
-  post: <T>(url: string, data?: any, config?: any) => {
-    return api.post<Response<T>>(url, data, config) as Promise<Response<T>>
-  },
-  put: <T>(url: string, data?: any, config?: any) => {
-    return api.put<Response<T>>(url, data, config) as Promise<Response<T>>
-  },
-  delete: <T>(url: string, config?: any) => {
-    return api.delete<Response<T>>(url, config) as Promise<Response<T>>
-  }
+  get: <T>(url: string, config?: AxiosRequestConfig) => request<T>({ ...config, method: 'GET', url }),
+  post: <T>(url: string, data?: any, config?: AxiosRequestConfig) => request<T>({ ...config, method: 'POST', url, data }),
+  put: <T>(url: string, data?: any, config?: AxiosRequestConfig) => request<T>({ ...config, method: 'PUT', url, data }),
+  delete: <T>(url: string, config?: AxiosRequestConfig) => request<T>({ ...config, method: 'DELETE', url })
 }
 
 export default apiClient
