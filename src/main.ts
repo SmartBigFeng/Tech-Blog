@@ -46,5 +46,21 @@ app.use(ElementPlus, {
     zIndex: 3000
 })
 
+// 处理 GitHub Pages 404 重定向
+// 当从 404.html 重定向回来时，恢复原始路径
+const redirectPath = sessionStorage.getItem('redirectPath')
+if (redirectPath) {
+    sessionStorage.removeItem('redirectPath')
+    // 移除 base 路径部分，只保留路由部分
+    const basePath = '/Tech-Blog'
+    const pathWithoutBase = redirectPath.startsWith(basePath)
+        ? redirectPath.slice(basePath.length) || '/'
+        : redirectPath
+
+    router.isReady().then(() => {
+        router.replace(pathWithoutBase)
+    })
+}
+
 // 挂载应用
 app.mount('#app')
