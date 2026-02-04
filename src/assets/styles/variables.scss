@@ -1,0 +1,127 @@
+// 霓虹赛博朋克配色方案 - 暗色主题
+:root {
+  // 背景色 - 深蓝黑色系
+  --bg-primary: #0D0D0D;
+  --bg-secondary: #0F172A;
+  --bg-tertiary: #1E293B;
+  --bg-card: rgba(30, 41, 59, 0.6);
+
+  // 霓虹色系
+  --neon-cyan: #00FFFF;
+  --neon-cyan-glow: rgba(0, 255, 255, 0.5);
+  --neon-purple: #B967FF;
+  --neon-purple-glow: rgba(185, 103, 255, 0.5);
+  --neon-pink: #FF71CE;
+  --neon-pink-glow: rgba(255, 113, 206, 0.5);
+  --neon-mint: #05FFA1;
+  --neon-mint-glow: rgba(5, 255, 161, 0.5);
+
+  // 文字色
+  --text-primary: #E2E8F0;
+  --text-secondary: #94A3B8;
+  --text-muted: #64748B;
+
+  // 边框
+  --border-color: rgba(255, 255, 255, 0.1);
+  --border-glow: rgba(0, 255, 255, 0.3);
+
+  // 渐变
+  --gradient-cyber: linear-gradient(135deg, #00FFFF 0%, #B967FF 50%, #FF71CE 100%);
+  --gradient-dark: linear-gradient(180deg, #0D0D0D 0%, #0F172A 100%);
+
+  // 阴影
+  --shadow-glow-cyan: 0 0 20px rgba(0, 255, 255, 0.3), 0 0 40px rgba(0, 255, 255, 0.1);
+  --shadow-glow-purple: 0 0 20px rgba(185, 103, 255, 0.3), 0 0 40px rgba(185, 103, 255, 0.1);
+  --shadow-glow-pink: 0 0 20px rgba(255, 113, 206, 0.3), 0 0 40px rgba(255, 113, 206, 0.1);
+  --shadow-card: 0 4px 30px rgba(0, 0, 0, 0.5);
+
+  // RGB 值（用于需要透明度的场景）
+  --bg-primary-rgb: 13, 13, 13;
+  --bg-secondary-rgb: 15, 23, 42;
+
+  // 间距
+  --spacing-xs: 4px;
+  --spacing-sm: 8px;
+  --spacing-md: 16px;
+  --spacing-lg: 24px;
+  --spacing-xl: 32px;
+  --spacing-2xl: 48px;
+  --spacing-3xl: 64px;
+
+  // 字体
+  --font-mono: 'JetBrains Mono', 'Fira Code', Consolas, monospace;
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+
+  // 过渡
+  --transition-fast: 150ms ease;
+  --transition-normal: 300ms ease;
+  --transition-slow: 500ms ease;
+
+  // 圆角
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+  --radius-full: 9999px;
+}
+
+// 亮色模式 - 现代温暖极简主义
+[data-theme="light"] {
+  // RGB 值
+  --bg-primary-rgb: 252, 250, 247;
+  --bg-secondary-rgb: 248, 245, 240;
+
+  // 背景色 - 温暖的奶油/米色调，避免纯白刺眼
+  --bg-primary: #fcfaf7;
+  --bg-secondary: #EDFAF7;
+  --bg-tertiary: #f0ebe3;
+  --bg-card: rgba(255, 255, 255, 0.85);
+
+  // 霓虹色系 - 调整为更柔和但仍有活力的色调
+  --neon-cyan: #0891b2;
+  --neon-cyan-glow: rgba(8, 145, 178, 0.2);
+  --neon-purple: #7c3aed;
+  --neon-purple-glow: rgba(124, 58, 246, 0.2);
+  --neon-pink: #db2777;
+  --neon-pink-glow: rgba(219, 39, 119, 0.2);
+  --neon-mint: #059669;
+  --neon-mint-glow: rgba(5, 150, 105, 0.2);
+
+  // 文字色 - 深炭灰色确保高对比度
+  --text-primary: #1c1917;
+  --text-secondary: #57534e;
+  --text-muted: #a8a29e;
+
+  // 边框 - 温暖的灰色调
+  --border-color: rgba(120, 113, 108, 0.15);
+  --border-glow: rgba(8, 145, 178, 0.15);
+
+  // 渐变 - 温暖的色调
+  --gradient-cyber: linear-gradient(135deg, #0891b2 0%, #7c3aed 50%, #db2777 100%);
+  --gradient-dark: linear-gradient(180deg, #fcfaf7 0%, #f8f5f0 100%);
+
+  // 阴影 - 柔和的暖色调阴影
+  --shadow-glow-cyan: 0 0 20px rgba(8, 145, 178, 0.12), 0 0 40px rgba(8, 145, 178, 0.06);
+  --shadow-glow-purple: 0 0 20px rgba(124, 58, 246, 0.12), 0 0 40px rgba(124, 58, 246, 0.06);
+  --shadow-glow-pink: 0 0 20px rgba(219, 39, 119, 0.12), 0 0 40px rgba(219, 39, 119, 0.06);
+  --shadow-card: 0 4px 20px rgba(0, 0, 0, 0.05), 0 1px 3px rgba(0, 0, 0, 0.03);
+}
+
+// SCSS 变量
+$bg-primary: #0D0D0D;
+$bg-secondary: #0F172A;
+$bg-tertiary: #1E293B;
+
+$neon-cyan: #00FFFF;
+$neon-purple: #B967FF;
+$neon-pink: #FF71CE;
+$neon-mint: #05FFA1;
+
+$text-primary: #E2E8F0;
+$text-secondary: #94A3B8;
+
+// 断点
+$breakpoint-sm: 640px;
+$breakpoint-md: 768px;
+$breakpoint-lg: 1024px;
+$breakpoint-xl: 1280px;
