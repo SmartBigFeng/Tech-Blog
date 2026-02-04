@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type { AnimatedModalContext } from "./AnimatedModalContext";
 import { useEventListener } from "@vueuse/core";
-import { computed, provide, ref } from "vue";
+import { computed, provide, ref, onMounted } from "vue";
 import { ANIMATED_MODAL_KEY } from "./AnimatedModalContext";
 
 interface Props {
@@ -58,7 +58,7 @@ const toggle = () => {
 const ctx: AnimatedModalContext = { open, setOpen, openModal, closeModal, toggle };
 provide(ANIMATED_MODAL_KEY, ctx);
 
-if (import.meta.client) {
+onMounted(() => {
   useEventListener(window, "keydown", (event) => {
     if (!props.closeOnEsc) return;
     if (!open.value) return;
@@ -66,7 +66,7 @@ if (import.meta.client) {
     event.preventDefault();
     closeModal();
   });
-}
+})
 </script>
 
 <template>

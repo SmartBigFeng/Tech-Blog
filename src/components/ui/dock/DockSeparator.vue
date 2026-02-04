@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { inject } from 'vue'
 import { ORIENTATION_INJECTION_KEY } from "./injectionKeys";
 
 const orientation = inject(ORIENTATION_INJECTION_KEY, "vertical");
