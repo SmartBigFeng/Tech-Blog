@@ -25,6 +25,7 @@ export function useTypewriter(texts: string[], options: {
 
   const type = () => {
     const fullText = texts[currentIndex.value]
+    if (!fullText) return
 
     if (isDeleting.value) {
       currentText.value = fullText.substring(0, currentText.value.length - 1)
