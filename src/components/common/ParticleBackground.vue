@@ -74,15 +74,18 @@ const drawParticles = () => {
     for (let j = i + 1; j < particles.length; j++) {
       if (connections >= config.maxConnections) break
 
-      const dx = particles[j].x - particle.x
-      const dy = particles[j].y - particle.y
+      const otherParticle = particles[j]
+      if (!otherParticle) continue
+
+      const dx = otherParticle.x - particle.x
+      const dy = otherParticle.y - particle.y
       const distance = Math.sqrt(dx * dx + dy * dy)
 
       if (distance < config.connectionDistance) {
         const alpha = (1 - distance / config.connectionDistance) * 0.3
         ctx!.beginPath()
         ctx!.moveTo(particle.x, particle.y)
-        ctx!.lineTo(particles[j].x, particles[j].y)
+        ctx!.lineTo(otherParticle.x, otherParticle.y)
         ctx!.strokeStyle = `rgba(${particleColor}, ${alpha})`
         ctx!.lineWidth = 0.5
         ctx!.stroke()

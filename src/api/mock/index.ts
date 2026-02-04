@@ -12,14 +12,14 @@ const mock = new MockAdapter(axios, {
 // 初始化所有 mock
 export function initMock() {
   // 文章相关
-  mock.onGet('/api/articles').reply(articleMocks.getArticles)
-  mock.onGet(/\/api\/articles\/\d+/).reply(articleMocks.getArticleById)
-  mock.onGet('/api/tags').reply(articleMocks.getTags)
-  mock.onGet('/api/archives').reply(articleMocks.getArchives)
-  mock.onGet('/api/search').reply(articleMocks.searchArticles)
+  mock.onGet('/api/articles').reply((config) => articleMocks.getArticles(config) as any)
+  mock.onGet(/\/api\/articles\/\d+/).reply((config) => articleMocks.getArticleById(config) as any)
+  mock.onGet('/api/tags').reply(() => articleMocks.getTags() as any)
+  mock.onGet('/api/archives').reply(() => articleMocks.getArchives() as any)
+  mock.onGet('/api/search').reply((config) => articleMocks.searchArticles(config) as any)
 
   // 用户相关
-  mock.onGet('/api/user').reply(userMocks.getUser)
+  mock.onGet('/api/user').reply(() => userMocks.getUser() as any)
 
   console.log('[Mock] Mock server initialized')
 }
